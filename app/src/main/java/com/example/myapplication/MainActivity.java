@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         String[] emails = new String[]{"shugel2004@gmail.com"};
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.putExtra(intent.EXTRA_EMAIL, emails);
-        intent.setData(Uri.parse("mailto:"));//only for emails
+        intent.setData(Uri.parse("mailto:"));//only for emails.
         startActivity(Intent.createChooser(intent,"Choose an email client"));
     }
     public void openPhone(){
