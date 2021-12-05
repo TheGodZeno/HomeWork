@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         mail = findViewById(R.id.e_mail);
         password = findViewById(R.id.e_psw);
         AccountExists = findViewById(R.id.b_haaa);
-        loadingBar = new ProgressDialog(this);
+        //loadingBar = new ProgressDialog(this);
         AccountExists.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -54,20 +54,30 @@ public class RegisterActivity extends AppCompatActivity {
     private void createNewAccount() {
         String email = mail.getText().toString().trim();
         String pwd = password.getText().toString();
-        if(TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        if(TextUtils.isEmpty(email))
         {
-            Toast.makeText(this,"Please enter email id",Toast.LENGTH_SHORT).show();
+            mail.setError("Email is Required");
+            //Toast.makeText(this,"Please enter email id",Toast.LENGTH_SHORT).show();
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            mail.setError("email must be valid");
         }
         if(TextUtils.isEmpty(pwd))
         {
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_SHORT).show();
+            password.setError("Password is required");
+            //Toast.makeText(this,"Please enter password",Toast.LENGTH_SHORT).show();
+        }
+        if(pwd.length() < 6)
+        {
+            password.setError("Password must be at least 6 Characters");
         }
         else
         {
-            loadingBar.setTitle("creating New Account");
-            loadingBar.setMessage("please wait, we are creating new Account");
-            loadingBar.setCanceledOnTouchOutside(true);
-            loadingBar.show();
+            //loadingBar.setTitle("creating New Account");
+            //loadingBar.setMessage("please wait, we are creating new Account");
+            //loadingBar.setCanceledOnTouchOutside(true);
+            //loadingBar.show();
             mAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -75,13 +85,14 @@ public class RegisterActivity extends AppCompatActivity {
                     {
                         sendUserToLoginActivity();
                         Toast.makeText(RegisterActivity.this,"Account created successfully",Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        //loadingBar.dismiss();
                     }
                     else
                     {
-                        String msg = task.getException().toString();
-                        Toast.makeText(RegisterActivity.this,"Error: "+msg,Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        Toast.makeText(RegisterActivity.this,"The email already exists, Please try again",Toast.LENGTH_SHORT).show();
+                        //String msg = task.getException().toString();
+                        //Toast.makeText(RegisterActivity.this,"Error: "+msg,Toast.LENGTH_SHORT).show();
+                        //loadingBar.dismiss();
                     }
                }
             });

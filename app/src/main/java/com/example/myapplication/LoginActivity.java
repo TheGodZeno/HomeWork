@@ -1,25 +1,24 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.lang.reflect.Field;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mail,password;
@@ -36,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.b_login);
         regp = findViewById(R.id.b_regp);
         mAuth = FirebaseAuth.getInstance();
-        loadingBar = new ProgressDialog(this);
+        //loadingBar = new ProgressDialog(this);
         currentUser = mAuth.getCurrentUser();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,16 +59,28 @@ public class LoginActivity extends AppCompatActivity {
     private void allowUserToLogin(){
         String email = mail.getText().toString().trim();
         String pwd = password.getText().toString();
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"please enter email id",Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(email))
+        {
+            mail.setError("Email is Required");
+            //Toast.makeText(this,"Please enter email id",Toast.LENGTH_SHORT).show();
         }
-        if(TextUtils.isEmpty(pwd)){
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_SHORT).show();
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            mail.setError("email must be valid");
+        }
+        if(TextUtils.isEmpty(pwd))
+        {
+            password.setError("Password is required");
+            //Toast.makeText(this,"Please enter password",Toast.LENGTH_SHORT).show();
+        }
+        if(pwd.length() < 6)
+        {
+            password.setError("Password must be at least 6 Characters");
         }
         else
         {
-            loadingBar.setTitle("Sign In");
-            loadingBar.setMessage("Please wait ,Because good things always take time");
+            //loadingBar.setTitle("Sign In");
+            //loadingBar.setMessage("Please wait ,Because good things always take time");
             mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -77,13 +88,14 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         sendToMainActivity();
                         Toast.makeText(LoginActivity.this,"Welcome to Reference Center",Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        //loadingBar.dismiss();
                     }
                     else
                     {
-                        String msg =task.getException().toString();
-                        Toast.makeText(LoginActivity.this,"Error: "+msg,Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        Toast.makeText(LoginActivity.this,"The email & password not exists or the credentials not correct ",Toast.LENGTH_SHORT).show();
+                        //String msg =task.getException().toString();
+                        //Toast.makeText(LoginActivity.this,"Error: "+msg,Toast.LENGTH_SHORT).show();
+                        //loadingBar.dismiss();
                     }
                 }
             });

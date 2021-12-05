@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.net.Inet4Address;
+
 public class MainActivity extends AppCompatActivity {
     private Button gmail,sms,phone,logout;
     FirebaseAuth mAuth;
@@ -80,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private  void sendToLoginActivity() {
-        Intent loginIntent = new Intent(this,LoginActivity.class);
-        startActivity(loginIntent);
+    private void sendToLoginActivity() {
+        Intent loginintnet = new Intent(this,LoginActivity.class);
+        startActivity(loginintnet);
     }
 }
