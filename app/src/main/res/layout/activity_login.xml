@@ -18,35 +18,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.286" />
 
     <Button
         android:id="@+id/b_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="388dp"
+        android:background="@color/white"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/e_psw2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/b_regp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:text="Don't have an account yet? SIGN UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_login"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.705" />
 
     <EditText
         android:id="@+id/e_mail2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="272dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="EMAIL"
@@ -62,11 +65,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@color/white"
         android:ems="10"
         android:hint="PASSWORD"
-        android:textColor="@color/black"
-        android:background="@color/white"
         android:inputType="textPassword"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,5 +84,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34"
         app:srcCompat="@drawable/login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

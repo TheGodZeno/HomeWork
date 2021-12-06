@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.text.TextUtils;
@@ -20,12 +21,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-    Button register;
-    EditText password;
-    EditText mail;
-    Button AccountExists;
+    Button register,AccountExists;
+    EditText password,mail;
     private FirebaseAuth mAuth;
-    private ProgressDialog loadingBar;
+    //private ProgressDialog loadingBar;
     //@SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                 createNewAccount();
             }
         });
+
     }
 
     private void createNewAccount() {
@@ -101,6 +101,13 @@ public class RegisterActivity extends AppCompatActivity {
     private void sendUserToLoginActivity() {
         Intent loginIntent = new Intent(this,LoginActivity.class);
         startActivity(loginIntent);
-
     }
+
+
+
+
+
+
+
+
 }

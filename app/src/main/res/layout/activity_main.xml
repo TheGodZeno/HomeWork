@@ -65,7 +65,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="36dp"
         android:layout_marginBottom="100dp"
-        android:text="Gmail" />
+        android:text="Gmail"
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/b_sms"
@@ -75,7 +76,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginBottom="100dp"
         android:layout_toEndOf="@+id/b_gmail"
-        android:text="sms" />
+        android:text="sms"
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/b_phone"
@@ -87,7 +89,8 @@
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="100dp"
         android:layout_toEndOf="@+id/b_sms"
-        android:text="phone" />
+        android:text="phone"
+        android:background="@color/white"/>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -111,7 +114,8 @@
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="38dp"
-        android:text="Logout" />
+        android:text="Logout"
+        android:background="@color/white"/>
 
 
 </RelativeLayout>
