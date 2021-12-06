@@ -24,7 +24,7 @@
         android:id="@+id/b_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="416dp"
         android:background="@color/white"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
